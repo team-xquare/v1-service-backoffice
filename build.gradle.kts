@@ -4,7 +4,12 @@ plugins {
     id("io.spring.dependency-management") version PluginVersions.DEPENDENCY_MANAGEMENT
     kotlin("plugin.spring") version PluginVersions.SPRING_PLUGIN
     kotlin("plugin.jpa") version PluginVersions.JPA_PLUGIN
+    id("jacoco")
 }
+
+group = "io.github"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -42,4 +47,27 @@ noArg {
 
 tasks.getByName<Jar>("jar") {
     enabled = false
+}
+
+tasks.compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
+    }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.outputLocation.set(File("${buildDir}/reports/jacoco/test/jacocoTestReport.xml"))
+        xml.required.set(true)
+        html.required.set(false)
+    }
 }
