@@ -5,10 +5,10 @@ enum class ErrorCode(
     val code: String,
     val message: String
 ) {
-    OtherUnAuthorized(401, "FEIGN-401-1", "Other Unauthorized."),
-    OtherForbidden(403, "FEIGN-403-1", "Other Forbidden."),
-    OtherExpiredToken(419, "FEIGN-419-1", "Other Expired Token."),
-    OtherBadRequest(400, "FEIGN-400-1", "Other Bad Request."),
+    OTHER_BAD_REQUEST(400, "FEIGN-400-1", "Other Bad Request."),
+    OTHER_UNAUTHORIZED(401, "FEIGN-401-1", "Other Unauthorized."),
+    OTHER_FORBIDDEN(403, "FEIGN-403-1", "Other Forbidden."),
+    OTHER_EXPIRED_TOKEN(419, "FEIGN-419-1", "Other Expired Token."),
 
     INTERNAL_SERVER_ERROR(500, "BACKOFFICE-500-1", "Internal Server Error.");
 }
