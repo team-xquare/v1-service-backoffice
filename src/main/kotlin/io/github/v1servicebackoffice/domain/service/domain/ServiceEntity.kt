@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 
 @Table(name = "tbl_service")
 @Entity
-class ServiceEntity private constructor(
+class ServiceEntity (
     @Id
     @Column(columnDefinition = "BINARY(16)")
     val id: UUID = UUID(0, 0),
@@ -46,6 +46,8 @@ class ServiceEntity private constructor(
     val env: Env
 ) {
     companion object {
+        // CloudFlare에서 새로운 Subdomain을 가져오면 subdomain 제외 모든 것이 null일 수 있다.
+        // 따라서 DB에 저장되는 값은 default를 가지고, entity class는 무조건 값이 있으므로 생성자에만 nullable처리를 하였다.
         operator fun invoke(
             position: Position?,
             name: String?,
