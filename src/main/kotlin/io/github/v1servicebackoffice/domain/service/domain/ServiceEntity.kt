@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 
 @Table(name = "tbl_service")
 @Entity
-class ServiceEntity constructor(
+class ServiceEntity (
     @Id
     @Column(columnDefinition = "BINARY(16)")
     val id: UUID = UUID(0, 0),
