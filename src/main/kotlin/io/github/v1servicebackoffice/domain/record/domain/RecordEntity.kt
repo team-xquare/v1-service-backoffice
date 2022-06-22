@@ -9,7 +9,6 @@ import javax.persistence.*
 @Table(name = "tbl_record")
 @Entity
 class RecordEntity(
-    override val id: UUID = UUID(0, 0),
 
     @field:Column(length = 20)
     val name: String,
@@ -21,4 +20,4 @@ class RecordEntity(
     @field:Column(length = 20)
     val type: RecordType
 
-): BaseUUIDEntity(id)
+): BaseUUIDEntity()
