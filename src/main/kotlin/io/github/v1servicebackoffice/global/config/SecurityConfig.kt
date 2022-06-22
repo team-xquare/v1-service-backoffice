@@ -20,6 +20,7 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
         http
             .authorizeRequests()
             .anyRequest().permitAll() //TODO remove this
+            .and().apply(FilterConfig())
     }
 
 }
