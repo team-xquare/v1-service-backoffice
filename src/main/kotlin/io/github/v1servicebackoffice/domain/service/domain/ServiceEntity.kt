@@ -3,16 +3,15 @@ package io.github.v1servicebackoffice.domain.service.domain
 import io.github.v1servicebackoffice.domain.service.domain.types.Env
 import io.github.v1servicebackoffice.domain.service.domain.types.Position
 import io.github.v1servicebackoffice.domain.service.domain.types.Type
+import io.github.v1servicebackoffice.global.entity.BaseUUIDEntity
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Table(name = "tbl_service")
 @Entity
-class ServiceEntity (
-    @Id
-    @Column(columnDefinition = "BINARY(16)")
-    val id: UUID = UUID(0, 0),
+class ServiceEntity private constructor(
+    override val id: UUID = UUID(0, 0),
 
     @field:NotNull
     @field:Enumerated(EnumType.STRING)
@@ -44,7 +43,7 @@ class ServiceEntity (
     @field:Enumerated(EnumType.STRING)
     @field:Column(columnDefinition = "CHAR(4) default 'PROD'")
     val env: Env
-) {
+): BaseUUIDEntity(id) {
     companion object {
         // CloudFlare에서 새로운 Subdomain을 가져오면 subdomain 제외 모든 것이 null일 수 있다.
         // 따라서 DB에 저장되는 값은 default를 가지고, entity class는 무조건 값이 있으므로 생성자에만 nullable처리를 하였다.
