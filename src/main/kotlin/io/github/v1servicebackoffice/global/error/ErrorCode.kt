@@ -5,6 +5,8 @@ enum class ErrorCode(
     val code: String,
     val message: String
 ) {
+    INVALID_ARGUMENT(400, "INVALID_ARGUMENT", "Invalid argument"),
+
     OTHER_BAD_REQUEST(400, "FEIGN-400-1", "Other Bad Request."),
     OTHER_UNAUTHORIZED(401, "FEIGN-401-1", "Other Unauthorized."),
     OTHER_FORBIDDEN(403, "FEIGN-403-1", "Other Forbidden."),
