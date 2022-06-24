@@ -1,11 +1,14 @@
 package io.github.v1servicebackoffice.global.error
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.web.filter.OncePerRequestFilter
 import javax.servlet.FilterChain
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-class ErrorHandlingFilter: OncePerRequestFilter() {
+class ErrorHandlingFilter(
+    private val objectMapper: ObjectMapper
+): OncePerRequestFilter() {
 
     override fun doFilterInternal(
         request: HttpServletRequest,
@@ -22,9 +25,9 @@ class ErrorHandlingFilter: OncePerRequestFilter() {
     }
 
     private fun errorToJson(errorCode: ErrorCode, response: HttpServletResponse) {
-        response.status = errorCode.status;
-        response.contentType = "application/json";
-        response.writer.write(ErrorResponse(errorCode).toString());
+        response.status = errorCode.status
+        response.contentType = "application/json"
+        response.writer.write(objectMapper.writeValueAsString(ErrorResponse(errorCode)))
     }
 
 }
