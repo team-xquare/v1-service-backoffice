@@ -9,8 +9,8 @@ class ErrorResponse(
     val message: String = errorCode.message,
 ) {
 
-    val status: Int = errorCode.status
+    fun getStatus(): Int = errorCode.status
 
-    val code: String = errorCode.code
+    fun getCode(): String = errorCode.code
 
 }
