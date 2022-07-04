@@ -58,6 +58,7 @@ jobs:
 
             CLOUDFLARE_ZONE=${{secrets.CLOUDFLARE_ZONE_STAGE}}
             CLOUDFLARE_AUTH_KEY=${{secrets.CLOUDFLARE_AUTH_KEY_STAGE}}
+            CLOUDFLARE_AUTH_EMAIL=${{secrets.CLOUDFLARE_AUTH_EMAIL_STAGE}}
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
