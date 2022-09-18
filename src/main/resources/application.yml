@@ -17,3 +17,7 @@ cloudflare:
   zone: ${CLOUDFLARE_ZONE}
   auth-email: ${CLOUDFLARE_AUTH_EMAIL}
   auth-key: ${CLOUDFLARE_AUTH_KEY}
+
+server:
+  servlet:
+    context-path: /back-office
