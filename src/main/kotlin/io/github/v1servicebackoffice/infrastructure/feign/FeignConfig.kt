@@ -16,9 +16,4 @@ class FeignConfig {
         return FeignClientErrorDecoder()
     }
 
-    @Bean
-    fun clientHeaderInterceptor(): ClientHeaderInterceptor {
-        return ClientHeaderInterceptor()
-    }
-
 }
