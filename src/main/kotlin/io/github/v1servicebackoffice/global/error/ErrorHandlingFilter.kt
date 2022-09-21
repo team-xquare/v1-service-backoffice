@@ -20,6 +20,7 @@ class ErrorHandlingFilter(
         } catch (e: BackOfficeException) {
             errorToJson(e.errorCode, response)
         } catch (e: Exception) {
+            logger.error("INTERNAL_SERVER_ERROR", e)
             errorToJson(ErrorCode.INTERNAL_SERVER_ERROR, response)
         }
     }
