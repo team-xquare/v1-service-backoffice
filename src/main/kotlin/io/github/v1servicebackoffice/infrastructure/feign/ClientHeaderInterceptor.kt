@@ -16,7 +16,7 @@ class ClientHeaderInterceptor(
 
 
     override fun apply(requestTemplate: RequestTemplate) {
-//        requestTemplate.header("X-Auth-Email", email)
+        requestTemplate.header("X-Auth-Email", email)
         requestTemplate.header("X-Auth-Key", key)
     }
 }
