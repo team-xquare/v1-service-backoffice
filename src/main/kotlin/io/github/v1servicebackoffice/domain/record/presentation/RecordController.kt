@@ -5,6 +5,7 @@ import io.github.v1servicebackoffice.domain.record.service.RecordService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -24,5 +25,8 @@ class RecordController(
 
     @GetMapping
     fun queryRecord(@RequestParam("q") queryString: String) = recordService.queryRecord(queryString)
+
+    @PutMapping
+    fun syncRecord() = recordService.syncRecord()
 
 }
