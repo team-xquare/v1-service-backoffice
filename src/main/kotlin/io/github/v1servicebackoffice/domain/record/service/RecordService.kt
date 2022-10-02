@@ -11,6 +11,7 @@ import io.github.v1servicebackoffice.global.toEnum
 import io.github.v1servicebackoffice.infrastructure.feign.client.CloudFlareClient
 import io.github.v1servicebackoffice.infrastructure.feign.dto.request.PostRecord
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class RecordService(
@@ -47,6 +48,19 @@ class RecordService(
                 .map { QueryRecordResponseElement(it.id, it.name, it.type.toString(), it.content) }
                 .toList()
         )
+    }
+
+    @Transactional
+    fun syncRecord() {
+        recordRepository.deleteAll() // TODO 조금 더 나은 방안 찾기.
+
+        cloudFlareClient.queryRecord()
+            .result.map {
+                println(it.name)
+                recordRepository.save(
+                    RecordEntity(it.id, it.name, it.content, it.type)
+                )
+            }
     }
 
 }
