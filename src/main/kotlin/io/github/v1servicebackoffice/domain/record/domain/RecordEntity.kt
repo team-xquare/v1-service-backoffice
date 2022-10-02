@@ -12,14 +12,14 @@ class RecordEntity(
     @Column(columnDefinition = "CHAR(32)")
     val id: String,
 
-    @Column(length = 20, unique = true)
-    val name: String,
+    @Column(length = 50, unique = true)
+    var name: String,
 
-    @Column(length = 15)
-    val content: String,
+    @Column(length = 50)
+    var content: String,
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    val type: RecordType
+    var type: RecordType
 
 )
