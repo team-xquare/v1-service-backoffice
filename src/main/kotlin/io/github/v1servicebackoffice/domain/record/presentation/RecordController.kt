@@ -23,6 +23,6 @@ class RecordController(
     fun postRecord(@RequestBody @Valid request: PostRecordRequest) = recordService.postRecord(request)
 
     @GetMapping
-    fun queryRecord(@RequestParam("q") queryString: String) = recordService.queryRecord(queryString)
+    fun queryRecord(@RequestParam(name = "q", required = false) queryString: String?) = recordService.queryRecord(queryString)
 
 }
