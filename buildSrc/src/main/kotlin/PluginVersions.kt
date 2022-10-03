@@ -3,4 +3,5 @@ object PluginVersions {
     const val DEPENDENCY_MANAGEMENT = "1.0.11.RELEASE"
     const val SPRING_PLUGIN = "1.6.21"
     const val JPA_PLUGIN = "1.6.10"
+    const val SPRING_CLOUD_VERSION = "2021.0.1"
 }

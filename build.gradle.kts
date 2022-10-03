@@ -16,10 +16,17 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom(Dependencies.SPRING_CLOUD)
+    }
+}
+
 dependencies {
     implementation(Dependencies.SPRING_STARTER)
     implementation(Dependencies.SPRING_VALIDATION)
     implementation(Dependencies.SPRING_SECURITY)
+    implementation(Dependencies.SPRING_CONFIG)
 
     implementation(Dependencies.JACKSON)
 
