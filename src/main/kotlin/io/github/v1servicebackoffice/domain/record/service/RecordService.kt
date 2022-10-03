@@ -56,7 +56,6 @@ class RecordService(
 
         cloudFlareClient.queryRecord()
             .result.map {
-                println(it.name)
                 recordRepository.save(
                     RecordEntity(it.id, it.name, it.content, it.type)
                 )
