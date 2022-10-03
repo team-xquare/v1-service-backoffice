@@ -56,13 +56,9 @@ jobs:
           registry: ${{ steps.ecr.outputs.registry }}
           tags: ${{ steps.get_version.outputs.VERSION }}
           buildargs: |
-            DB_URL=${{secrets.DB_URL_PROD}}
-            DB_USERNAME=${{secrets.DB_USERNAME_PROD}}
-            DB_PASSWORD=${{secrets.DB_PASSWORD_PROD}}
-            DB_NAME=${{secrets.DB_NAME_PROD}}
-
-            CLOUDFLARE_ZONE=${{secrets.CLOUDFLARE_ZONE_PRODE}}
-            CLOUDFLARE_AUTH_KEY=${{secrets.CLOUDFLARE_AUTH_KEY_PROD}}
+            CLOUD_CONFIG_USERNAME=${{secrets.CLOUD_CONFIG_USERNAME}}
+            CLOUD_CONFIG_PASSWORD=${{secrets.CLOUD_CONFIG_PASSWORD}}
+            PROFILE=prod
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
