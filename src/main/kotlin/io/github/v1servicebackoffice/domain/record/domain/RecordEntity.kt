@@ -13,13 +13,13 @@ class RecordEntity(
     val id: String,
 
     @Column(length = 50, unique = true)
-    var name: String,
+    val name: String,
 
     @Column(length = 50)
-    var content: String,
+    val content: String,
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    var type: RecordType
+    val type: RecordType
 
 )
