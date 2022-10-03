@@ -20,8 +20,12 @@ class ErrorHandlingFilter(
         } catch (e: BackOfficeException) {
             errorToJson(e.errorCode, response)
         } catch (e: Exception) {
-            logger.error("INTERNAL_SERVER_ERROR", e)
-            errorToJson(ErrorCode.INTERNAL_SERVER_ERROR, response)
+            if(e.cause is BackOfficeException) {
+                errorToJson((e.cause as BackOfficeException).errorCode, response)
+            } else {
+                logger.error("INTERNAL_SERVER_ERROR", e)
+                errorToJson(ErrorCode.INTERNAL_SERVER_ERROR, response)
+            }
         }
     }
 
