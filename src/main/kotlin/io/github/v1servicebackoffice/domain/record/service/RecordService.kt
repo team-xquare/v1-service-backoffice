@@ -41,9 +41,15 @@ class RecordService(
         )
     }
 
-    fun queryRecord(queryString: String): QueryRecordResponse {
-        return QueryRecordResponse(
+    fun queryRecord(queryString: String?): QueryRecordResponse {
+        val recordResult = if (queryString != null) {
             recordRepository.findByNameStartingWith(queryString)
+        } else {
+            recordRepository.findAll()
+        }
+
+        return QueryRecordResponse(
+            recordResult
                 .map { QueryRecordResponseElement(it.id, it.name, it.type.toString(), it.content) }
                 .toList()
         )
