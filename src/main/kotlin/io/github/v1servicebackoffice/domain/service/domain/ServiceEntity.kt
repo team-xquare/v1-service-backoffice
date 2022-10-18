@@ -66,4 +66,6 @@ class ServiceEntity private constructor(
         )
 
     }
+
+    fun getServiceUrl() = this.subdomain + "xquare.app" + this.prefix
 }
