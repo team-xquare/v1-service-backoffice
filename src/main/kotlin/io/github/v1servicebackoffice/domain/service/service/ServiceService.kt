@@ -11,19 +11,19 @@ class ServiceService(
 ) {
 
     fun queryServiceList(): QueryServiceListResponse {
-        return QueryServiceListResponse(
-            serviceRepository.findAll()
-                .map {
-                    QueryServiceListElement(
-                        it.position,
-                        it.name,
-                        it.type,
-                        it.getServiceUrl(),
-                        it.env,
-                        it.port
-                    )
-                }
-        )
+        return QueryServiceListResponse(queryServices())
     }
+
+    private fun queryServices(): List<QueryServiceListElement> = serviceRepository.findAll()
+        .map {
+            QueryServiceListElement(
+                it.position,
+                it.name,
+                it.type,
+                it.getServiceUrl(),
+                it.env,
+                it.port
+            )
+        }
 
 }
